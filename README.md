@@ -1,25 +1,24 @@
 # \[Work In Progress\] AMWA INFO-003 NMOS Sink Metadata Processing Architecture
 
-[![Lint Status](https://github.com/AMWA-TV/info-003/workflows/Lint/badge.svg)](https://github.com/AMWA-TV/info-003/actions?query=workflow%3ALint)
-[![Render Status](https://github.com/AMWA-TV/info-003/workflows/Render/badge.svg)](https://github.com/AMWA-TV/info-003/actions?query=workflow%3ARender)
+[![Lint Status](https://github.com/AMWA-TV/nmos-sink-metadata-processing-architecture/workflows/Lint/badge.svg)](https://github.com/AMWA-TV/nmos-sink-metadata-processing-architecture/actions?query=workflow%3ALint)
+[![Render Status](https://github.com/AMWA-TV/nmos-sink-metadata-processing-architecture/workflows/Render/badge.svg)](https://github.com/AMWA-TV/nmos-sink-metadata-processing-architecture/actions?query=workflow%3ARender)
 
 This repository holds the source for this Specification, part of the family of [Networked Media Open Specifications](https://specs.amwa.tv/nmos) from the [Advanced Media Workflow Association](https://amwa.tv)
 
 <!-- INTRO-START -->
 
-## What does it do?
+### What does it do?
 
-- It provides a template for AMWA NMOS Interface Specifcations.
+- It introduces a common format choice approach of some physical interfaces into NMOS
 
-## Why does it matter?
+### Why does it matter?
 
-- It helps ensure consistency between NMOS Specifications.
-- It helps us test our continuous integration.
+- It shows how physical protocols of common format choice can be handled in the networked way
 
-## How does it work?
+### How does it work?
 
-- It contains examples of documentation, API, schemas, and examples.
-- These are rendered to HTML and uploaded to specs.amwa.tv
+- Receivers expose information about their Capabilities based on EDID
+- Senders get a control mechanism which allows to configure their actual media parameters described in Flows and Sources
 
 <!-- INTRO-END -->
 
