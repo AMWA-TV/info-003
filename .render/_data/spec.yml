@@ -1,0 +1,10 @@
+amwa_id: INFO-003
+url: https://specs.amwa.tv/info-003
+name: Sink Metadata Processing Architecture
+status: Work In Progress
+repo_name: info-003
+alt_repo_name: nmos-sink-metadata-processing-architecture
+repo_url: https://github.com/AMWA-TV/info-003
+releases:
+default_branch: main
+show_in_index: true
