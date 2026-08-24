@@ -1,4 +1,4 @@
-# AMWA INFO-003 NMOS Sink Metadata Processing Architecture
+# \[Archived\] AMWA INFO-003 NMOS Sink Metadata Processing Architecture
 
 ## Introduction
 

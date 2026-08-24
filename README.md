@@ -1,4 +1,4 @@
-# \[Work In Progress\] AMWA INFO-003 NMOS Sink Metadata Processing Architecture
+# \[Archived\] AMWA INFO-003 NMOS Sink Metadata Processing Architecture
 
 [![Lint Status](https://github.com/AMWA-TV/info-003/workflows/Lint/badge.svg)](https://github.com/AMWA-TV/info-003/actions?query=workflow%3ALint)
 [![Render Status](https://github.com/AMWA-TV/info-003/workflows/Render/badge.svg)](https://github.com/AMWA-TV/info-003/actions?query=workflow%3ARender)
