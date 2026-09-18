@@ -1,0 +1,24 @@
+{
+  "amwa_id": "INFO-003",
+  "url": "https://specs.amwa.tv/info-003",
+  "name": "Sink Metadata Processing Architecture",
+  "status": "Archived",
+  "repo_name": "info-003",
+  "alt_repo_name": "nmos-sink-metadata-processing-architecture",
+  "repo_url": "https://github.com/AMWA-TV/info-003",
+  "releases": null,
+  "default_branch": "main",
+  "show_in_index": false,
+  "intro": {
+    "what_does_it_do": [
+      "It introduces a common format choice approach of some physical interfaces into NMOS"
+    ],
+    "why_does_it_matter": [
+      "It shows how physical protocols of common format choice can be handled in the networked way"
+    ],
+    "how_does_it_work": [
+      "Receivers expose information about their Capabilities based on EDID",
+      "Senders get a control mechanism which allows to configure their actual media parameters described in Flows and Sources"
+    ]
+  }
+}

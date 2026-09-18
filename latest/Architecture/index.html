@@ -1,0 +1,995 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://specs.amwa.tv/new/info-003/latest/Architecture/">
+      
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="zensical-0.0.62">
+    
+    
+      
+        <title>[Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture - [Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture</title>
+      
+    
+    
+      
+        
+      
+      <link rel="stylesheet" href="../assets/stylesheets/modern/main.ce62732f.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,500,500i,700,700i%7CJetBrains+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../stylesheets/amwa-branding.css">
+    
+    <script>__md_scope=new URL("..",location),__md_scope.pathname.endsWith("/")||(__md_scope=new URL(__md_scope.pathname+"/",location)),__md_hash=e=>[...e].reduce(((e,t)=>(e<<5)-e+t.charCodeAt(0)),0),__md_get=(e,t=localStorage,_=__md_scope)=>JSON.parse(t.getItem(_.pathname+"."+e)),__md_set=(e,t,_=localStorage,a=__md_scope)=>{try{_.setItem(a.pathname+"."+e,JSON.stringify(t))}catch(e){}},document.documentElement.setAttribute("data-platform",navigator.platform)</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer" aria-label="Navigation"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#archived-amwa-info-003-nmos-sink-metadata-processing-architecture" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <div data-md-color-scheme="default" data-md-component="outdated" hidden>
+        
+      </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="./.." title="[Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture" class="md-header__button md-logo" aria-label="[Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer" aria-label="Navigation">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-menu" viewBox="0 0 24 24"><path d="M4 5h16M4 12h16M4 19h16"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            [Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              [Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search" aria-label="Search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-search" viewBox="0 0 24 24"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog" aria-label="Search">
+  <button type="button" class="md-search__button">
+    Search
+  </button>
+</div>
+      
+    
+    <div class="md-header__source">
+      
+        <a href="https://github.com/AMWA-TV/info-003" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AMWA-TV/info-003
+  </div>
+</a>
+      
+    </div>
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="./.." title="[Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture" class="md-nav__button md-logo" aria-label="[Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-book-open" viewBox="0 0 24 24"><path d="M12 5v16M20.001 19A2 2 0 0 0 22 17V5a2 2 0 0 0-1.999-2L16 3.002A5 5 0 0 0 12 5a5 5 0 0 0-4-2H4a2 2 0 0 0-2 2v12a2 2 0 0 0 1.999 2H8a5 5 0 0 1 4 2 5 5 0 0 1 4-2z"/></svg>
+
+    </a>
+    [Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/AMWA-TV/info-003" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.3.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    AMWA-TV/info-003
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="./.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+  [Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  
+                    
+                    
+                    
+                      
+                    
+                    
+                      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+                      <div class="md-sidebar-button__wrapper">
+                        <label class="md-sidebar-button" for="__toc"></label>
+                      </div>
+                    
+                  
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--secondary" aria-label="On this page">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      On this page
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Introduction
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Motivation
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Definitions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-user-stories" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Core User Stories
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nmos-network-topologies" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NMOS Network Topologies
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#context-level-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Context Level Diagram
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#container-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Container Diagram
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#component-diagrams" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Component Diagrams
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Component Diagrams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gateway-sender-component-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gateway Sender Component Diagram
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway-receiver-component-diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gateway Receiver Component Diagram
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dynamic-aspects-of-the-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Dynamic Aspects of the Architecture
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dynamic Aspects of the Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#user-story-1-automatic-video-mode-negotiation" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        User Story 1 - Automatic Video Mode Negotiation
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Story 1 - Automatic Video Mode Negotiation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gateway-sender-steps-for-sink-metadate-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gateway Sender steps for Sink Metadate Processing
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gateway-receiver-steps-for-sink-metadate-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Gateway Receiver steps for Sink Metadate Processing
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#nmos-high-level-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NMOS High-Level Perspective
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-story-2-user-configured-graphics-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        User Story 2 - User Configured Graphics Mode
+      </span>
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="User Story 2 - User Configured Graphics Mode">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#nmos-is-04-is-05-perspective" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        NMOS IS-04 IS-05 Perspective
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-stories-5-and-6-detailed-edid-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        User Stories 5 and 6 - Detailed EDID Information
+      </span>
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusions" class="md-nav__link">
+    <span class="md-ellipsis">
+      <span class="md-typeset">
+        Conclusions
+      </span>
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+  
+
+
+<h1 id="archived-amwa-info-003-nmos-sink-metadata-processing-architecture">[Archived] AMWA INFO-003 NMOS Sink Metadata Processing Architecture</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This document presents an architecture for Sink Metadata Processing operating in an overall NMOS environment. The document provides a list of user stories followed by static architectural elements. These elements are used as the basis to construct UML sequence diagrams for both EDID processing and related IS-04 discovery and IS-05 connection management. The document provides definitions and network topologies related to the architecture.</p>
+<h2 id="motivation">Motivation</h2>
+<p>ProAV environments differ from broadcast ones. One of ProAV features is focusing on end users which integrate hardware and software on their own with a priori unknown components. Operating in this environment requires automated or semi-automated approaches which signalize about incompatibility between components and configure them to achieve this compatibility if possible. Physical interfaces used in the ProAV industry provide such tools for these purposes as EDID, InfoFrames etc. which requires representing them on the NMOS layer which may be also helpful outside of ProAV environments.</p>
+<h2 id="definitions">Definitions</h2>
+<p><strong>NMOS System</strong></p>
+<p>A subnet of NMOS-compatible devices.</p>
+<p><strong>NMOS Controller</strong></p>
+<p>An application which operates with NMOS APIs in order to control an NMOS System: discovers Nodes, makes connections etc. It is a wider name of Broadcast Controller.</p>
+<p><strong>Gateway Device</strong></p>
+<p>A device which encapsulates a digital video or/and audio signal (usually, from a physical connection) into IP packets. Conversely, the device may perform the reverse operation for IP packets to a digital signal.</p>
+<p><strong>NMOS Device Controller</strong></p>
+<p>An entity that controls functional block(s) behind an NMOS Device and links this block(s) with NMOS APIs. In the scope of this document its main purpose is providing and maintaining Sink Metadata Processing API.</p>
+<p><strong>Media Profile</strong></p>
+<p>Metadata object which describes a desired format of a Sender. Media Profile consists of separate parameters required to set up an associated Sender and such IS-04 resources behind it as Source and Flow.</p>
+<h2 id="core-user-stories">Core User Stories</h2>
+<p>This architecture addresses the following user stories:</p>
+<ol>
+<li>
+<p>As a user with a computer that is connected to an HDMI-IP Gateway (Gateway Sender) that is connected through a network to an IP-HDMI Gateway (Gateway Receiver) plugged into an HDMI monitor with EDID, I would like to be able to turn my computer on and have the best video resolution displayed.</p>
+</li>
+<li>
+<p>As a user with a computer that is connected as above, I'd like to choose a lower video resolution, so that my graphic intensive program plays back more smoothly.</p>
+</li>
+<li>
+<p>As an installer I have a set of pairs of gateway devices that I send out to my staff, when they set up remote presentations to support our hotel guests. I have the gateway devices configured to auto-connect to each other, as soon as they are directly connected via a network cable. The specific monitor or projector (Sink) and Source are unknown, until they are plugged into the gateway devices. I want my gateways to work like they're connected not via a network cable but an HDMI/DisplayPort one.</p>
+</li>
+</ol>
+<blockquote>
+<p><strong>Note:</strong> The intent is that the standard supports a configuration that is able to automatically establish a connection when they are directly connected. This is different from a sending device (with a controller service acting as a Broadcast Controller) that would be configured to connect to a specific receiver when it was detected on the network, which is possible to do today.</p>
+</blockquote>
+<ol>
+<li>
+<p>As an installer, I've added new monitors to the digital signage system that uses multicast IP transport. When I plug them in, they suppose 4K60 as their best, but the rest of the monitors are 1080p. I need the system to play my digital signage content on all of my system's monitors at the best profile supported by all monitors.</p>
+</li>
+<li>
+<p>As a digital signage installer, I need to colour-match the monitors on my video wall. To do this, I need to read the detailed EDID information, which includes the monitor's colour profile, model number and other such information, which I use in my software for calibration.</p>
+</li>
+<li>
+<p>As an installer, I have developed some in-house EDID software that reads the more detailed data from the monitor, such as serial numbers, manufacture date and colour management information. When I make video walls for customers, I use AV over IP hardware to deliver content. I would like to be able to retrieve the EDID binary representation from my monitors into my home-built software, so that I can use that information to adjust the monitors and manage my system.</p>
+</li>
+</ol>
+<h2 id="nmos-network-topologies">NMOS Network Topologies</h2>
+<p>Each of the user stories applies to one or more network topology which describes the NMOS ecosystem. The following network topologies are identified as relating to particular user stories.</p>
+<ul>
+<li>Peer-to-peer: Two media nodes are directly attached with no network. There are no other devices present.</li>
+<li>Relates to user stories: 1, 2, 3</li>
+<li>Few-to-few: Very limited number of nodes on a network with no dedicated NMOS Registration and Discovery Service (RDS). Device discovery is handled internally by each device on the network.</li>
+<li>Relates to user stories: 3, 4, 5, 6</li>
+<li>Many-to-Many: Scalable amount of media nodes within a large network. There are dedicated servers and/or applications for each component such as an NMOS Controller and NMOS RDS.</li>
+<li>Relates to user stories: 4, 5, 6</li>
+</ul>
+<h2 id="context-level-diagram">Context Level Diagram</h2>
+<blockquote>
+<p><strong>Note:</strong> This document will use C4 as the method to capture and develop the architecture. For those unfamiliar with C4, the following introduction is highly recommended: <a href="https://c4model.com/">https://c4model.com/</a>. The quick 5-minute intro is particularly useful, and the associated video provides more details.</p>
+</blockquote>
+<p>Figure 1 shows one context diagram for an NMOS System. An IT Staff Person responsible for setting up and administering this System uses an external NMOS Controller. It interacts with the System via RESTful APIs, SNMPv3 etc. as described in <a href="https://www.jt-nm.org/tr-1001-1">JT-NM TR-1001-1</a>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Context Diagram for managing an NMOS System" src="../images/svg/ipmx_context_diagram.svg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 1. Context Diagram for managing an NMOS System</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="container-diagram">Container Diagram</h2>
+<p>Figure 2 shows a Container Level diagram. The diagram shows the technologies used for the containers that make up an NMOS System. Shown are:</p>
+<ul>
+<li>An IS-04 Registration and Discovery Service</li>
+<li>A Gateway Sender that is an IS-04 Node</li>
+<li>Several Gateway Receivers that are also IS-04 Nodes.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Container Diagram for NMOS System" src="../images/svg/ipmx_container_diagram.svg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 2. Container Diagram for NMOS System</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="component-diagrams">Component Diagrams</h2>
+<h3 id="gateway-sender-component-diagram">Gateway Sender Component Diagram</h3>
+<p>Figure 3 shows a component diagram for a Gateway Sender. This diagram illustrates the role of NMOS Device Controller. In addition, this interacts with an HDMI Source by presenting an EDID to it. It also is responsible for the setup of IS-04 resources as shown in the Sequence Diagrams found below.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Component Diagram of a Gateway Sender" src="../images/svg/ipmx_encoder_component_diagram.svg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 3. Component Diagram of a Gateway Sender</em></td>
+</tr>
+</tbody>
+</table>
+<h3 id="gateway-receiver-component-diagram">Gateway Receiver Component Diagram</h3>
+<p>Figure 4 shows a component diagram for a Gateway Receiver. As in the Gateway Sender, NMOS Device Controller component is present. For a Gateway Receiver, the NMOS Device Controller is responsible for reading the HDMI Sink's EDID and setting up IS-04 resources including populating IS-04 Receivers with values using <a href="https://specs.amwa.tv/bcp-004-01">BCP-004-01 Receiver Caps</a>.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Component Diagram of a Gateway Receiver" src="../images/svg/ipmx_decoder_component_diagram.svg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 4. Component Diagram of a Gateway Receiver</em></td>
+</tr>
+</tbody>
+</table>
+<h2 id="dynamic-aspects-of-the-architecture">Dynamic Aspects of the Architecture</h2>
+<p>With the above architecture, we can explore more deeply how we can realize the user stories and use cases using sequence diagrams. The document breaks the user stories into Sink Metadata processing perspectives and IS-04, IS-05 processing perspectives.</p>
+<h3 id="user-story-1-automatic-video-mode-negotiation">User Story 1 - Automatic Video Mode Negotiation</h3>
+<blockquote>
+<ol>
+<li>As a user with a computer that is connected to an HDMI-IP Gateway (Gateway Sender) that is connected through a network to an IP-HDMI Gateway (Gateway Receiver) plugged into an HDMI monitor with EDID, I would like to be able to turn my computer on and have the best video resolution displayed.</li>
+</ol>
+</blockquote>
+<h4 id="gateway-sender-steps-for-sink-metadate-processing">Gateway Sender steps for Sink Metadate Processing</h4>
+<p>Let’s choose an initialization use case for the Gateway Sender. When a Gateway Sender starts up, it should present an EDID to it’s HDMI Sink. A sequence diagram for this use case from the Sink Metadate Processing perspective is shown in Figure 5, with associated steps described more fully in Table 1.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Sequence Diagram for Sink Metadate Processing for Gateway Sender" src="../images/svg/encoder_setup.svg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 5. Sequence Diagram for Sink Metadate Processing for Gateway Sender</em></td>
+</tr>
+</tbody>
+</table>
+<p>Table 1: Sequence Diagram Steps for Figure 5</p>
+<table>
+<thead>
+<tr>
+<th>Sequence Step</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1.Put Media Profiles</td>
+<td>The NMOS Controller puts the Media Profiles of required video and audio formats using Sink Metadata Processing API.</td>
+<td>RAML for the endpoints is provided as a separate specification.</td>
+</tr>
+<tr>
+<td>2. Return 200</td>
+<td>Sink Metadata Processing API provided by NMOS Device Controller responds with 200 HTTP code.</td>
+<td></td>
+</tr>
+<tr>
+<td>3. Present EDID</td>
+<td>The NMOS Device Controller sends the EDID to the HDMI Source using HDMI DDC.</td>
+<td></td>
+</tr>
+<tr>
+<td>4. Update Sources, Flows and Senders</td>
+<td>The NMOS Device Controller updates the IS-04 Sources, Flows and Senders with details of changed media formats.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="gateway-receiver-steps-for-sink-metadate-processing">Gateway Receiver steps for Sink Metadate Processing</h4>
+<p>The second use case for the Sink Metadate perspective shows a Gateway Receiver. Figure 6 and Table 2 provide a sequence diagram and associated details for this use case.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Sequence Diagram for Sink Metadate Processing for Gateway Receiver" src="../images/svg/decoder_setup.svg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 6. Sequence Diagram for Sink Metadate Processing for Gateway Receiver</em></td>
+</tr>
+</tbody>
+</table>
+<p>Table 2: Sequence Diagram Steps for Figure 6</p>
+<table>
+<thead>
+<tr>
+<th>Sequence Step</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Request EDID</td>
+<td>NMOS Device Controller reads EDID of an HDMI Sink.</td>
+<td></td>
+</tr>
+<tr>
+<td>2. Give EDID</td>
+<td>HDMI Sink gives EDID.</td>
+<td></td>
+</tr>
+<tr>
+<td>3. Update Sink Metadata Processing API content</td>
+<td>The NMOS Device Controller updates Receiver with a new Sink and attaches its binary EDID.</td>
+<td></td>
+</tr>
+<tr>
+<td>4. Update Receiver and Receiver Capabilities</td>
+<td>The NMOS Device Controller updates the IS-04 Receivers with new Receiver Caps.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="nmos-high-level-perspective">NMOS High-Level Perspective</h4>
+<p>Once a Gateway Sender and a Gateway Receiver have come online and processed the EDID information as shown in Figures 5 and 6, the system is ready to process IS-05 connections.
+Figure 7 shows a sequence diagram for setting up a connection between a Gateway Sender and two Gateway Receivers. In this illustration the IT person requests via an NMOS Controller that an output stream from the Gateway Sender is sent to two Gateway Receivers. Table 3 describes the steps with details.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Sequence Diagram for user story 1 from NMOS high-level perspective" src="../images/svg/connection_management_sequence.svg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 7. Sequence Diagram for user story 1 from NMOS high-level perspective</em></td>
+</tr>
+</tbody>
+</table>
+<p>Table 3: Details for Sequence Diagram Steps for Figure 6</p>
+<table>
+<thead>
+<tr>
+<th>Sequence Step</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Choose Sender and Receivers</td>
+<td>The IT person interacts with the NMOS Controller to choose a set of receivers for a sender.</td>
+<td></td>
+</tr>
+<tr>
+<td>2. Get Receiver Caps 1</td>
+<td>The NMOS Controller retrieves the Receiver Caps from the Gateway Receiver 1.</td>
+<td>Population of the Receiver Caps has been done as part of EDID processing shown in Figure 6.</td>
+</tr>
+<tr>
+<td>3. Get Receiver Caps 2</td>
+<td>The NMOS Controller retrieves the Receiver Caps from the Gateway Receiver 2.</td>
+<td></td>
+</tr>
+<tr>
+<td>4. Put Media Profiles</td>
+<td>Based on the Receiver Caps Media Profile is created with the best video format available (as required by the user story) or Media Profiles which all the Receivers are capable of consuming.</td>
+<td>Create info needed for the Gateway Sender to update IS-04 resources.</td>
+</tr>
+<tr>
+<td>5. Start Stream</td>
+<td>The standard IS-05 mechanism is used to start the stream sending on the Gateway Sender</td>
+<td></td>
+</tr>
+<tr>
+<td>6-7. Receive Stream</td>
+<td>IS-05 is used to make the connection to Gateway Receivers 1 and 2</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="user-story-2-user-configured-graphics-mode">User Story 2 - User Configured Graphics Mode</h3>
+<p>The section above covered user stories 1, 3, and 4. User story 2 requires an additional step related to changing HDMI Source format on the fly:</p>
+<blockquote>
+<ol>
+<li>As a user with a computer that is connected as above, I'd like to choose a lower video resolution, so that my graphic intensive program plays back more smoothly.</li>
+</ol>
+</blockquote>
+<p>Figure 8 shows the EDID processing required for this user story. The NMOS Device Controller is responsible for detecting a change in the video format sent by the HDMI Source by monitoring changes to HDMI InfoFrames. The NMOS Device Controller can either poll the changes in HDMI InfoFrames or cue off of an HDMI Hot Plug Detect event from the HDMI Source.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Sequence Diagram for User Configured Graphics Mode" src="../images/svg/infoframe_change_sequence.svg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 8. Sequence Diagram for User Configured Graphics Mode</em></td>
+</tr>
+</tbody>
+</table>
+<p>Table 4: Details for User Configured Graphics Mode</p>
+<table>
+<thead>
+<tr>
+<th>Sequence Step</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Send InfoFrames</td>
+<td>The HDMI Source changes it’s video mode in response to a user changing video format.</td>
+<td></td>
+</tr>
+<tr>
+<td>2. Update Sources, Flows and Senders</td>
+<td>The NMOS Device Controller updates the Sources, Flows and Senders resources of IS-04 based on the new video format.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h4 id="nmos-is-04-is-05-perspective">NMOS IS-04 IS-05 Perspective</h4>
+<p>From the perspective of setting up an IS-05 connection once the sequences shown in Figure 8 completes the identical steps as shown in Figure 7 apply to realize User-Story 2.</p>
+<h3 id="user-stories-5-and-6-detailed-edid-information">User Stories 5 and 6 - Detailed EDID Information</h3>
+<p>User stories 5 and 6 will be treated together since both can be realized using the same mechanism. The user stories are:</p>
+<blockquote>
+<ol>
+<li>
+<p>As a digital signage installer, I need to colour-match the monitors on my video wall. To do this, I need to read the detailed EDID information, which includes the monitor's colour profile, model number and other such information, which I use in my software for calibration.</p>
+</li>
+<li>
+<p>As an installer, I have developed some in-house EDID software that reads the more detailed data from the monitor, such as serial numbers, manufacture date and colour management information. When I make video walls for customers, I use AV over IP hardware to deliver content. I would like to be able to retrieve the EDID binary representation from my monitors into my home-built software, so that I can use that information to adjust the monitors and manage my system.</p>
+</li>
+</ol>
+</blockquote>
+<p>Since detailed information that is provided by EDID is applicable only to an Gateway Receiver a single use case is described for retrieving EDID information from an Gateway Receiver.</p>
+<p>Figure 9 shows a sequence diagram based on Figure 4 for retrieving the information required by user stories 5 and 6. Table 5 provides details on relevant steps.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: center;"><img alt="Sequence Diagram for user Retrieving Raw and Parsed EDID Information" src="../images/svg/edid_retrieving_sequence.svg" /></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: center;"><em>Figure 9. Sequence Diagram for user Retrieving Raw and Parsed EDID Information</em></td>
+</tr>
+</tbody>
+</table>
+<p>Table 5: Sequence Diagram Steps for Figure 9</p>
+<table>
+<thead>
+<tr>
+<th>Sequence Step</th>
+<th>Description</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Request EDID</td>
+<td>At startup or on change (Hot Plug Detect) NMOS Device Controller requests the EDID of the HDMI Sink.</td>
+<td></td>
+</tr>
+<tr>
+<td>2. Give EDID</td>
+<td>HDMI Sink gives EDID.</td>
+<td></td>
+</tr>
+<tr>
+<td>3. Update Sink Metadata Processing API content</td>
+<td>The NMOS Device Controller updates Receiver with a new Sink and attaches its binary EDID.</td>
+<td></td>
+</tr>
+<tr>
+<td>4. Get EDID binary</td>
+<td>A user requests the EDID binary of the HDMI Sink associated with Receiver.</td>
+<td></td>
+</tr>
+<tr>
+<td>5. Request EDID binary</td>
+<td>The NMOS Controller requests the EDID binary from Sink Metadata Processing API.</td>
+<td></td>
+</tr>
+<tr>
+<td>6. Return EDID binary</td>
+<td>Sink Metadata Processing API returns EDID binary to NMOS Controller.</td>
+<td></td>
+</tr>
+<tr>
+<td>7. Return EDID binary</td>
+<td>NMOS Controller returns EDID binary to the user.</td>
+<td></td>
+</tr>
+<tr>
+<td>8. Get Sink</td>
+<td>The user requests information about HDMI Sink from NMOS Controller.</td>
+<td></td>
+</tr>
+<tr>
+<td>9. Request Sink</td>
+<td>The NMOS Controller requests the Sink from Sink Metadata Processing API.</td>
+<td></td>
+</tr>
+<tr>
+<td>10. Return EDID binary</td>
+<td>Sink Metadata Processing API returns Sink to NMOS Controller.</td>
+<td></td>
+</tr>
+<tr>
+<td>11. Return EDID binary</td>
+<td>NMOS Controller returns Sink to the user.</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h2 id="conclusions">Conclusions</h2>
+<p>This document has described an Architecture that covers Sink Metadata Processing user stories provided by phase I of the NMOS Sink Metadata Processing activity. Overall design goals to minimize changes to the existing architecture result in an architecture that adds an additional API. Details of the architecture have been provided using C4 diagrams for Context, Container, and Component Diagrams along with UML Sequence diagrams to illustrate realization of the user stories using the proposed architecture.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://zensical.org/" target="_blank" rel="noopener">
+      Zensical
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+      <script id="__config" type="application/json">{"annotate":null,"base":"..","features":[],"redirect":null,"search":"../assets/javascripts/workers/search.7d14d953.min.js","tags":null,"translations":{"clipboard.copied":"Copied to clipboard","clipboard.copy":"Copy to clipboard","search.result.more.one":"1 more on this page","search.result.more.other":"# more on this page","search.result.none":"No matching documents","search.result.one":"1 matching document","search.result.other":"# matching documents","search.result.placeholder":"Type to start searching","search.result.term.missing":"Missing","select.version":"Select version"},"version":{"provider":"mike"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.8dcc8e9c.min.js"></script>
+      
+        <script src="../javascripts/json-viewer.js"></script>
+      
+        <script src="../javascripts/amwa-branding.js"></script>
+      
+    
+  </body>
+</html>
